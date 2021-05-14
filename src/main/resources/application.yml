@@ -21,3 +21,24 @@ spring:
   cache:
     # 一般来说是不用配置的，Spring Cache 会根据依赖的包自行装配
     type: redis
+  flyway:
+    enabled: true
+    # 项目每次启动时，校验路径下是否存在 SQL 文件
+    check-location: false
+    # 这张表里记录数据库脚本执行的历史记录
+    table: suvue_version
+    # Flyway 默认情况下会去清空原始库，再重新执行 SQL 脚本，这在生产环境下是不可取的，因此需要将这个配置关闭
+    clean-disabled: true
+    # 迁移前校验 SQL 文件是否存在问题
+    validate-on-migrate: true
+    # 最开始已经存在表结构，且不存在 flyway_schema_history 表时，需要设置为 true
+    baseline-on-migrate: true
+    # 基础版本 0
+    baseline-version: 0
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/suvue?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+
+
