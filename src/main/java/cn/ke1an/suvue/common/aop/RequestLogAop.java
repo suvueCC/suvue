@@ -32,7 +32,7 @@ import java.util.Objects;
 @Aspect
 @Component
 @Slf4j
-public class AopRequestLog {
+public class RequestLogAop {
 
     private static final String UNKNOWN = "unknown";
 

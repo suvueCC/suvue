@@ -84,7 +84,7 @@
             <version>${mybatis.version}</version>
         </dependency>
 
-        <!-- 添加 解析UserAgent工具类 的依赖 -->
+        <!-- 添加 spring-aop 的依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>

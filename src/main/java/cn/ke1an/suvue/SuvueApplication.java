@@ -1,5 +1,6 @@
 package cn.ke1an.suvue;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2021/05/12 21:09
  */
 @SpringBootApplication
+@MapperScan(basePackages = {"cn.ke1an.suvue.mapper"})
 public class SuvueApplication {
     public static void main(String[] args) {
         SpringApplication.run(SuvueApplication.class, args);
