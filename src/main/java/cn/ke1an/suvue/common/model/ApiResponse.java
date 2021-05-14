@@ -1,7 +1,7 @@
-package cn.ke1an.suvue.model;
+package cn.ke1an.suvue.common.model;
 
-import cn.ke1an.suvue.constant.Status;
-import cn.ke1an.suvue.exception.BaseException;
+import cn.ke1an.suvue.common.constant.Status;
+import cn.ke1an.suvue.common.exception.BaseException;
 import lombok.Data;
 
 /**

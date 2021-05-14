@@ -15,9 +15,9 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <hutool-version>5.6.5</hutool-version>
-        <dockerfile-version>1.4.9</dockerfile-version>
+        <hutool.version>5.6.5</hutool.version>
         <mybatis.version>1.3.2</mybatis.version>
+        <user.agent.version>1.20</user.agent.version>
     </properties>
     <dependencies>
         <!-- 添加 java-web 的依赖 -->
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>${hutool-version}</version>
+            <version>${hutool.version}</version>
         </dependency>
         <!-- 添加 lombok 的依赖 -->
         <dependency>
@@ -82,6 +82,19 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis.version}</version>
+        </dependency>
+
+        <!-- 添加 解析UserAgent工具类 的依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!-- 添加 解析UserAgent工具类 的依赖 -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>${user.agent.version}</version>
         </dependency>
     </dependencies>
 

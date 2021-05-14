@@ -1,4 +1,4 @@
-package cn.ke1an.suvue.constant;
+package cn.ke1an.suvue.common.constant;
 
 import lombok.Getter;
 

@@ -1,7 +1,7 @@
-package cn.ke1an.suvue.handler;
+package cn.ke1an.suvue.common.handler;
 
-import cn.ke1an.suvue.exception.ServiceException;
-import cn.ke1an.suvue.model.ApiResponse;
+import cn.ke1an.suvue.common.exception.ServiceException;
+import cn.ke1an.suvue.common.model.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;

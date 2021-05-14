@@ -1,6 +1,6 @@
-package cn.ke1an.suvue.exception;
+package cn.ke1an.suvue.common.exception;
 
-import cn.ke1an.suvue.constant.Status;
+import cn.ke1an.suvue.common.constant.Status;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
