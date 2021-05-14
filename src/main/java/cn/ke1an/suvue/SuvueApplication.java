@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2021/05/12 21:09
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"cn.ke1an.suvue.mapper"})
 public class SuvueApplication {
     public static void main(String[] args) {
         SpringApplication.run(SuvueApplication.class, args);
