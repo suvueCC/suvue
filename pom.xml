@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.10.RELEASE</version>
+        <version>2.1.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.ke1an</groupId>
@@ -19,6 +19,9 @@
         <user.agent.version>1.20</user.agent.version>
         <mybatis.pagehelper.version>1.2.9</mybatis.pagehelper.version>
         <mybatis.plus.version>3.0.5</mybatis.plus.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <hibernate.validator.version>6.0.16.Final</hibernate.validator.version>
+        <guava.version>29.0-jre</guava.version>
     </properties>
     <dependencies>
         <!-- 添加 java-web 的依赖 -->
@@ -103,6 +106,30 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis.plus.version}</version>
+        </dependency>
+
+        <!-- 添加 spring-security 的依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 

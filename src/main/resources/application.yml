@@ -43,7 +43,7 @@ spring:
     # 项目每次启动时，校验路径下是否存在 SQL 文件
     check-location: false
     # 这张表里记录数据库脚本执行的历史记录
-    table: suvue_version
+    table: sv_version
     # Flyway 默认情况下会去清空原始库，再重新执行 SQL 脚本，这在生产环境下是不可取的，因此需要将这个配置关闭
     clean-disabled: true
     # 迁移前校验 SQL 文件是否存在问题
@@ -52,6 +52,10 @@ spring:
     baseline-on-migrate: true
     # 基础版本 0
     baseline-version: 0
+  security:
+    user:
+      name: user
+      password: 123
 
 logging:
   level:
@@ -82,5 +86,20 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: true
 
+jwt:
+  config:
+    key: suvue
+    ttl: 600000
+    remember: 604800000
 
+custom:
+  config:
+    ignores:
+      # 需要过滤的 post 请求
+      post:
+        - "/api/auth/login"
+        - "/api/auth/logout"
+      # 需要过滤的请求，不限方法
+      pattern:
+        - "/test/**"
 

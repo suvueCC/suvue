@@ -1,5 +1,6 @@
 package cn.ke1an.suvue.common.model;
 
+import cn.ke1an.suvue.common.constant.IStatus;
 import cn.ke1an.suvue.common.constant.Status;
 import cn.ke1an.suvue.common.exception.BaseException;
 import lombok.Data;
@@ -12,6 +13,8 @@ import lombok.Data;
  */
 @Data
 public class ApiResponse {
+    private static final long serialVersionUID = 8993485788201922830L;
+
     /**
      * 状态码
      */
@@ -60,13 +63,22 @@ public class ApiResponse {
     }
 
     /**
+     * 构造一个成功且不带数据的API返回
+     *
+     * @return ApiResponse
+     */
+    public static ApiResponse ofSuccess() {
+        return ofSuccess(null);
+    }
+
+    /**
      * 构造一个成功且带数据的API返回
      *
      * @param data 返回数据
      * @return ApiResponse
      */
     public static ApiResponse ofSuccess(Object data) {
-        return ofStatus(Status.OK, data);
+        return ofStatus(Status.SUCCESS, data);
     }
 
     /**
@@ -76,7 +88,7 @@ public class ApiResponse {
      * @return ApiResponse
      */
     public static ApiResponse ofMessage(String message) {
-        return of(Status.OK.getCode(), message, null);
+        return of(Status.SUCCESS.getCode(), message, null);
     }
 
     /**
@@ -92,34 +104,22 @@ public class ApiResponse {
     /**
      * 构造一个有状态且带数据的API返回
      *
-     * @param status 状态 {@link Status}
+     * @param status 状态 {@link IStatus}
      * @param data   返回数据
      * @return ApiResponse
      */
-    public static ApiResponse ofStatus(Status status, Object data) {
+    public static ApiResponse ofStatus(IStatus status, Object data) {
         return of(status.getCode(), status.getMessage(), data);
     }
 
     /**
-     * 构造一个异常且带数据的API返回
-     *
-     * @param t    异常
-     * @param data 返回数据
-     * @param <T>  {@link BaseException} 的子类
-     * @return ApiResponse
-     */
-    public static <T extends BaseException> ApiResponse ofException(T t, Object data) {
-        return of(t.getCode(), t.getMessage(), data);
-    }
-
-    /**
-     * 构造一个异常且带数据的API返回
+     * 构造一个异常的API返回
      *
      * @param t   异常
      * @param <T> {@link BaseException} 的子类
      * @return ApiResponse
      */
     public static <T extends BaseException> ApiResponse ofException(T t) {
-        return ofException(t, null);
+        return of(t.getCode(), t.getMessage(), t.getData());
     }
 }

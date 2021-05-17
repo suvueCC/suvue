@@ -9,48 +9,114 @@ import lombok.Getter;
  * @date 2021/05/12 22:52
  */
 @Getter
-public enum Status {
+public enum Status implements IStatus {
+    /**
+     * 操作成功！
+     */
+    SUCCESS(200, "操作成功！"),
 
-    OK(200, "操作成功"),
+    /**
+     * 操作异常！
+     */
+    ERROR(500, "操作异常！"),
 
-    //通用错误=========================================================
-    SYSTEM_ERROR(500, "系统异常"),
-    BAD_REQUEST(400, "错误请求"),
-    UNAUTHORIZED(401, "未授权的访问"),
-    FORBIDDEN(403, "接口目前禁止使用，请不要再尝试请求"),
-    NOT_FOUND(404, "不存在的地址"),
-    EXPECTATION_FAILED(417, "未满足期望值"),
-    PARAMETER_INVALID(1001, "参数错误"),
-    IO_EXCEPTION(1004, "IO异常"),
+    /**
+     * 退出成功！
+     */
+    LOGOUT(200, "退出成功！"),
 
-    //登录与授权=========================================================
-    LOGIN_ERROR(1101, "账户或者密码错误"),
-    ACCOUNT_DISABLED(1102, "账户不可用"),
-    ACCOUNT_EXIST(1103, "账户已存在"),
-    SIGN_ERROR(1104, "签名错误"),
-    ACCOUNT_NO_PERMISSION(1105, "账户无权限"),
-    TOKEN_TIMEOUT(1106, "token过期"),
+    /**
+     * 请先登录！
+     */
+    UNAUTHORIZED(401, "请先登录！"),
 
-    //数据查询中出现的错误=============================================
-    DATA_NOT_EXIST(1201, "数据不存在"),
-    DATA_NOT_READY(1202, "数据没有准备好"),
-    DATA_INVALID(1203, "数据无效或者数据损坏"),
-    DATA_ALREADY_EXIST(1204, "数据已存在"),
-    DATA_PROCESS_ERROR(1205, "数据处理时错误"),
-    DATA_ACQUIRE_ERROR(1206, "获取redis分布式锁失败"),
-    ;
+    /**
+     * 暂无权限访问！
+     */
+    ACCESS_DENIED(403, "权限不足！"),
+
+    /**
+     * 请求不存在！
+     */
+    REQUEST_NOT_FOUND(404, "请求不存在！"),
+
+    /**
+     * 请求方式不支持！
+     */
+    HTTP_BAD_METHOD(405, "请求方式不支持！"),
+
+    /**
+     * 请求异常！
+     */
+    BAD_REQUEST(400, "请求异常！"),
+
+    /**
+     * 参数不匹配！
+     */
+    PARAM_NOT_MATCH(400, "参数不匹配！"),
+
+    /**
+     * 参数不能为空！
+     */
+    PARAM_NOT_NULL(400, "参数不能为空！"),
+
+    /**
+     * 当前用户已被锁定，请联系管理员解锁！
+     */
+    USER_DISABLED(403, "当前用户已被锁定，请联系管理员解锁！"),
+
+    /**
+     * 用户名或密码错误！
+     */
+    USERNAME_PASSWORD_ERROR(5001, "用户名或密码错误！"),
+
+    /**
+     * token 已过期，请重新登录！
+     */
+    TOKEN_EXPIRED(5002, "token 已过期，请重新登录！"),
+
+    /**
+     * token 解析失败，请尝试重新登录！
+     */
+    TOKEN_PARSE_ERROR(5002, "token 解析失败，请尝试重新登录！"),
+
+    /**
+     * 当前用户已在别处登录，请尝试更改密码或重新登录！
+     */
+    TOKEN_OUT_OF_CTRL(5003, "当前用户已在别处登录，请尝试更改密码或重新登录！"),
+
+    /**
+     * 无法手动踢出自己，请尝试退出登录操作！
+     */
+    KICKOUT_SELF(5004, "无法手动踢出自己，请尝试退出登录操作！");
 
     /**
      * 状态码
      */
-    private final Integer code;
+    private Integer code;
+
     /**
-     * 内容
+     * 返回信息
      */
-    private final String message;
+    private String message;
 
     Status(Integer code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    public static Status fromCode(Integer code) {
+        Status[] statuses = Status.values();
+        for (Status status : statuses) {
+            if (status.getCode().equals(code)) {
+                return status;
+            }
+        }
+        return SUCCESS;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(" Status:{code=%s, message=%s} ", getCode(), getMessage());
     }
 }

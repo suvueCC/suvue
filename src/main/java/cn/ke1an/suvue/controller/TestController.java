@@ -1,29 +1,34 @@
 package cn.ke1an.suvue.controller;
 
-import cn.hutool.core.lang.Dict;
-import cn.hutool.core.util.StrUtil;
+import cn.ke1an.suvue.common.model.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
- * 测试
+ * 测试Controller
  *
  * @author zhaokeyan
- * @date 2021/05/14 21:28
+ * @date 2021/05/17 16:32
  */
 @Slf4j
 @RestController
+@RequestMapping("/test")
 public class TestController {
-    /**
-     * 测试方法
-     *
-     * @param who 测试参数
-     * @return {@link Dict}
-     */
-    @GetMapping("/test")
-    public Dict test(String who) {
-        return Dict.create().set("who", StrUtil.isBlank(who) ? "me" : who);
+    @GetMapping
+    public ApiResponse list() {
+        log.info("测试列表查询");
+        return ApiResponse.ofMessage("测试列表查询");
     }
 
+    @PostMapping
+    public ApiResponse add() {
+        log.info("测试列表添加");
+        return ApiResponse.ofMessage("测试列表添加");
+    }
+
+    @PutMapping("/{id}")
+    public ApiResponse update(@PathVariable Long id) {
+        log.info("测试列表修改");
+        return ApiResponse.ofSuccess("测试列表修改");
+    }
 }
