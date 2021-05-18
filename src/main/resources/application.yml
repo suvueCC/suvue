@@ -81,6 +81,8 @@ mybatis-plus:
       db-type: mysql
     #刷新mapper 调试神器
     refresh: true
+    #不显示logo
+    banner: false
   # 原生配置
   configuration:
     map-underscore-to-camel-case: true

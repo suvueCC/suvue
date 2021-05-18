@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  */
 @Component
 @AllArgsConstructor
-public class RbacAuthorityService {
+public class AuthService {
     private final SvRoleMapper roleMapper;
     private final SvPermissionMapper permissionMapper;
     private final RequestMappingHandlerMapping mapping;

@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 // RBAC 动态 url 认证
                 .anyRequest()
-                .access("@rbacAuthorityService.hasPermission(request,authentication)")
+                .access("@authService.hasPermission(request,authentication)")
 
                 // 登出行为由自己实现，参考 AuthController#logout
                 .and().logout().disable()
