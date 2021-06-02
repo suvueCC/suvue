@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.suvue.module.mapper.SvPermissionMapperEx">
+    <resultMap id="permissionResultMap" type="cn.suvue.module.entity.SvPermission">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="url" property="url"/>
+        <result column="type" property="type"/>
+        <result column="permission" property="permission"/>
+        <result column="method" property="method"/>
+        <result column="sort" property="sort"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+
+    <select id="selectByRoleIds" resultMap="permissionResultMap">
+        select
+        sv_permission.*
+        from sv_permission
+        left join sv_role_permission on sv_permission.id = sv_role_permission.permission_id
+        where sv_role_permission.role_id in
+        <foreach collection="roleIds" open="(" close=")" item="roleId">
+            #{roleId}
+        </foreach>
+    </select>
+</mapper>

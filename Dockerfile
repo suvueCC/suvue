@@ -2,7 +2,7 @@
 FROM openjdk:8-jdk-alpine
 
 # 作者信息
-MAINTAINER "zhaokeyan"
+MAINTAINER "suvuecc"
 
 # 添加一个存储空间
 VOLUME /opt
